@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="{% static 'css/home.css'%}">
+</head>
+<body>
+    <div class="header">
+        <div class="content">
+            <img src="{% static 'image/cloud.png' %}" alt="">
+           
+        </div>
+        <h2>Blogs</h2>
+        <div>
+            {% for p in profile %}
+            <a href="{% url 'profile_view' %}"><img src="{{p.photo.url}}" alt=""></a>
+            {% endfor %}
+        </div> 
+    </div>
+    <div class="content1">
+            
+        <a href="{% url 'add_blog' %}"><button>Add Blog</button></a>
+        
+        <a href="{% url 'post_blog' %}"><button>Post Blog</button></a>
+
+        <a href="{% url 'logout' %}"> <button>Logout</button> </a>
+    </div>
+
+    {% block content %}
+
+    {% endblock %}
+    <div class="header">
+    
+        <h4>End Blogs</h4>
+       
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+    {% block content %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <select name="type">
+                <option value="">Select</option>
+                <option value="LifeStyle">LifeStyle</option>
+                <option value="Business">Business</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Travel">Travel</option>
+            </select>
+            <input type="search" name="title">
+            <button type="submit">go</button>
+        </form>
+        <table>
+            <tr>
+                <th>Sl.No</th>
+                <!-- <th>Blog Id</th> -->
+                <th>Title</th>
+                <th>Image</th>
+            </tr>
+            {% for b in blogs %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <!-- <td>{{b.id}}</td> -->
+
+                <td><a href="{% url 'blog_view' id=b.id %}">{{b.title}}</a></td>
+                <td><img src="{{b.image.url}}" alt=""></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <!-- {% include 'footer.html' %} -->
+    {% endblock %}

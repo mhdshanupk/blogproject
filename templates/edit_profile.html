@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="">Email</label>
+        <input type="email" name="email"  value="{{profile.user.email}}">
+        <br>
+        <label for="">First Name</label>
+        <input type="text" name="fname" value="{{profile.user.first_name}}">
+        <br>
+        <label for="">Last Name</label>
+        <input type="text" name="lname" value="{{profile.user.last_name}}">
+        <br>
+        <label for="">Phone Number:</label>
+        <input type="text" name="phone" value="{{profile.phone}}">
+        <br>
+        <label for="">Profile Picture:</label>
+        <input type="file" name="photo" value="{{profile.photo}}">
+        <br>
+        <label for="">Location:</label>
+        <input type="text" name="place" value="{{profile.location}}">
+        <br>
+        <button type="submit">Add</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit_Blog</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="title" value="{{blog.title}}">
+        <input type="text" name="content" value="{{blog.content}}">
+        <input type="file" name="photo">
+        <button type="submit" >Edit</button>
+    </form>
+</body>
+</html>

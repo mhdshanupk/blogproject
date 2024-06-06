@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+    {% block content %}    
+        <h3>{{blog.title}}</h3>
+        <p>{{blog.content}}</p>
+        <p>{{blog.type}}</p>
+        <img src="{{blog.image.url}}" alt="" style="width: 200px; height:200px">
+        <br>
+        <a href="{% url 'blog_edit' id=blog.id %}">Edit</a>
+        <a href="{% url 'blog_delete' id=blog.id %}">Delete</a>
+        <hr>
+        <form method="post">
+            {% csrf_token %}
+            Comment:
+            <textarea name="comment" cols="30" rows="3" placeholder="Enter your comment"></textarea>
+            <button type="submit">Add</button>
+        </form>
+        <hr>
+        {% for c in comment %}
+            <div class="comment" >
+                <span style="background-color: blueviolet; color: white; padding: 5px;">{{c.fk_user.username}}</span>
+                {{forloop.counter}} {{c.comment}}
+                
+                {% if c.fk_user == request.user %}
+                <button><a href="{% url 'edit_comment' c.id %}">Edit</a></button>
+                <button><a href="{% url 'delete_comment' c.id %}">Delete</a></button>
+                {% endif %}
+            </div> 
+            <br>
+        {% endfor %}
+    {% endblock %}
